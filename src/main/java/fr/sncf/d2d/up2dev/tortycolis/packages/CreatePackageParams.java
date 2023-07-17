@@ -1,21 +1,33 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages;
 
-public class CreatePackageRequestBody {
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public class CreatePackageParams {
     
+    @NotBlank
     private String number;
 
+    @NotBlank
     private String street;
 
+    @NotBlank
     private String postalCode;
 
+    @NotBlank
     private String city;
 
+    @NotBlank
     private String country;
 
     private String details;
 
+    @NotBlank
     private String phoneNumber;
 
+    @Email
+    @NotNull
     private String email;
 
     public String getNumber() {
@@ -38,8 +50,8 @@ public class CreatePackageRequestBody {
         return postalCode;
     }
 
-    public void setPostalCode(Integer postalCode) {
-        this.postalCode = postalCode.toString();
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getCity() {
@@ -81,14 +93,4 @@ public class CreatePackageRequestBody {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @Override
-    public String toString(){
-        return String.format(
-            "email=%s",
-            this.email
-        );
-    }
-
-    
 }
