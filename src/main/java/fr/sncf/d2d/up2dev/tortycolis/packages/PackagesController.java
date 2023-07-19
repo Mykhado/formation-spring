@@ -1,9 +1,8 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
@@ -17,8 +16,11 @@ public class PackagesController {
         this.createPackageUseCase = createPackageUseCase;
     }
     
+
     @PostMapping
+    @ResponseStatus( HttpStatus.CREATED)
     public Package create(@RequestBody @Valid CreatePackageParams params){
+
         return this.createPackageUseCase.create(params);
     }
 }

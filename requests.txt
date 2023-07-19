@@ -1,1 +1,5 @@
 curl -X POST -H 'Content-Type: application/json' --data '{"email":"r.nzaou@sncf.fr"}'  http://127.0.0.1:8080/packages
+
+
+$ curl -v -X POST -H 'Content-Type: application/json' --data '{"email":"test@domain.com","city":"Paris","number":"10","street":"rue de la paix","phoneNumber":"0688888888","postalCode":"75000","country":"france","details":"2eme etages"}
+'  http://127.0.0.1:8080/packages && echo

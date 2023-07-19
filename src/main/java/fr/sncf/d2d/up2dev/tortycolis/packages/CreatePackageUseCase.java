@@ -1,6 +1,11 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @Service
 public class CreatePackageUseCase {
@@ -25,6 +30,7 @@ public class CreatePackageUseCase {
             .build();
 
         this.packagesRepository.save(newPackage);
+
 
         return newPackage;
     }
