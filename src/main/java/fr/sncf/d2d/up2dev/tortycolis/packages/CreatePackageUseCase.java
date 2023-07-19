@@ -34,4 +34,23 @@ public class CreatePackageUseCase {
 
         return newPackage;
     }
+// version avec Response entity
+/*    public ResponseEntity<Package> create(CreatePackageParams params){
+
+        final var newPackage = Package.builder()
+                .email(params.getEmail())
+                .city(params.getCity())
+                .number(params.getNumber())
+                .street(params.getStreet())
+                .phoneNumber(params.getPhoneNumber())
+                .postalCode(params.getPostalCode())
+                .country(params.getCountry())
+                .details(params.getDetails())
+                .build();
+
+        this.packagesRepository.save(newPackage);
+
+
+        return new ResponseEntity<>(newPackage,HttpStatus.CREATED);
+    }*/
 }

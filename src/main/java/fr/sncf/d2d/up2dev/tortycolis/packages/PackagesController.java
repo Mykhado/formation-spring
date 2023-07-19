@@ -12,15 +12,23 @@ public class PackagesController {
 
     private final CreatePackageUseCase createPackageUseCase;
 
-    public PackagesController(CreatePackageUseCase createPackageUseCase){
+    public PackagesController(CreatePackageUseCase createPackageUseCase) {
         this.createPackageUseCase = createPackageUseCase;
     }
-    
+
 
     @PostMapping
-    @ResponseStatus( HttpStatus.CREATED)
-    public Package create(@RequestBody @Valid CreatePackageParams params){
+    @ResponseStatus(HttpStatus.CREATED)
+    public Package create(@RequestBody @Valid CreatePackageParams params) {
 
         return this.createPackageUseCase.create(params);
     }
+
+    // Version avec response entity
+    /*    public ResponseEntity<Package> create(@RequestBody @Valid CreatePackageParams params){
+
+        return this.createPackageUseCase.create(params);
+    }*/
+
+
 }
