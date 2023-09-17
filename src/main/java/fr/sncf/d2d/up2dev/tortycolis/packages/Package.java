@@ -20,7 +20,11 @@ public class Package {
 
     private final String phoneNumber;
 
+    private final PackageStatus status;
+
     private final String email;
+
+    private final String trackingCode;
 
     public UUID getId() {
         return this.id;
@@ -62,8 +66,16 @@ public class Package {
         return this.email;
     }
 
+    public PackageStatus getStatus(){
+        return this.status;
+    }
+
+    public String getTrackingCode(){
+        return this.trackingCode;
+    }
+
     private Package(String number, String street, String postalCode, String city, String country, String details,
-            String phoneNumber, String email) {
+            String phoneNumber, PackageStatus status, String email, String trackingCode) {
         this.number = number;
         this.street = street;
         this.postalCode = postalCode;
@@ -72,6 +84,8 @@ public class Package {
         this.details = details;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.status = status;
+        this.trackingCode = trackingCode;
     }
 
     public static PackageBuilder builder(){
@@ -95,6 +109,10 @@ public class Package {
         private String phoneNumber;
 
         private String email;
+
+        private PackageStatus status;
+
+        private String trackingCode;
 
         public PackageBuilder number(String number){
             this.number = number;
@@ -136,6 +154,16 @@ public class Package {
             return this;
         }
 
+        public PackageBuilder status(PackageStatus status){
+            this.status = status;
+            return this;
+        }
+
+        public PackageBuilder trackingCode(String code){
+            this.trackingCode = code;
+            return this;
+        }
+
         public Package build(){
             return new Package(
                 this.number,
@@ -145,7 +173,9 @@ public class Package {
                 this.country,
                 this.details,
                 this.phoneNumber,
-                this.email
+                this.status,
+                this.email,
+                this.trackingCode
             );
         }
     }

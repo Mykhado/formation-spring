@@ -22,6 +22,8 @@ public class CreatePackageUseCase {
             .postalCode(params.getPostalCode())
             .country(params.getCountry())
             .details(params.getDetails())
+            .trackingCode("blablabla")
+            .status(PackageStatus.PENDING)
             .build();
 
         this.packagesRepository.save(newPackage);
