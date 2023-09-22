@@ -48,7 +48,7 @@ public class CreatePackageUseCase {
 
         var output = "";
         for (var i = 0; i < TRACKING_CODE_SIZE; i++){
-            output += alphabet[(((int)bytes[i]) + 128) % alphabet.length];
+            output += alphabet[Byte.toUnsignedInt(bytes[i]) % alphabet.length];
         }
         return output;
     }
