@@ -1,5 +1,7 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +20,7 @@ public class PackagesController {
     }
     
     @PostMapping
-    public Package create(@RequestBody @Valid CreatePackageParams params){
+    public Package create(@RequestBody @Valid CreatePackageParams params) throws NoSuchAlgorithmException {
         return this.createPackageUseCase.create(params);
     }
 }
