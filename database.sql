@@ -8,6 +8,7 @@ CREATE TABLE packages (
     country VARCHAR(1024) NOT NULL,
     details VARCHAR(1024),
     phone_number VARCHAR(256) NOT NULL,
+    postal_code VARCHAR(256) NOT NULL,
     email VARCHAR(1024) NOT NULL,
     status package_status NOT NULL,
     delivery_person_id CHAR(36) ,

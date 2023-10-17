@@ -1,4 +1,4 @@
-package fr.sncf.d2d.up2dev.tortycolis.packages;
+package fr.sncf.d2d.up2dev.tortycolis.packages.models;
 
 import java.util.UUID;
 
@@ -74,8 +74,9 @@ public class Package {
         return this.trackingCode;
     }
 
-    private Package(String number, String street, String postalCode, String city, String country, String details,
+    private Package(UUID id, String number, String street, String postalCode, String city, String country, String details,
             String phoneNumber, PackageStatus status, String email, String trackingCode) {
+        this.id = id;
         this.number = number;
         this.street = street;
         this.postalCode = postalCode;
@@ -93,6 +94,8 @@ public class Package {
     }
 
     public static class PackageBuilder {
+
+        private UUID id;
 
         private String number;
 
@@ -113,6 +116,11 @@ public class Package {
         private PackageStatus status;
 
         private String trackingCode;
+
+        public PackageBuilder id(UUID id){
+            this.id = id;
+            return this;
+        }
 
         public PackageBuilder number(String number){
             this.number = number;
@@ -166,6 +174,7 @@ public class Package {
 
         public Package build(){
             return new Package(
+                this.id,
                 this.number,
                 this.street,
                 this.postalCode, 

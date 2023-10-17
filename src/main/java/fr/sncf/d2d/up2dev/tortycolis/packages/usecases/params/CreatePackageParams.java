@@ -1,4 +1,4 @@
-package fr.sncf.d2d.up2dev.tortycolis.packages;
+package fr.sncf.d2d.up2dev.tortycolis.packages.usecases.params;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
