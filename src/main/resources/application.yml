@@ -3,8 +3,8 @@ tortycolis:
     users:
         - id: fd00e6b4-6773-11ee-b429-00155d5de71c
           email: r.nzaou@sncf.fr
-          password: $2y$10$PSiQ5pH3QpZjQWqf3eRZIexRNhhedNMXMWG8BDtZpZh.xHFSti7QO
-          role: ADMIN
+          password: $2y$10$YcfFWF3jcQvmpHbVjU.EL.LB42eezTeGOjw5PSP74DXVF.7Bi9Er6 # Coucou12345
+          role: ADMINISTRATOR
         - id: a2946d6c-6774-11ee-9beb-00155d5de71c
           email: jean-laurent@sncf.fr
           password: $2y$10$1o81cb8wMl38U/oDbjAV.OqNgY0oEwCH6fSaJUaEY5yd0H4R2cy4q

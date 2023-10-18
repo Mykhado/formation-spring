@@ -1,9 +1,15 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages.rest;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +28,6 @@ import jakarta.validation.Valid;
 @RequestMapping("/packages")
 public class PackagesController {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
-
     private final CreatePackageUseCase createPackageUseCase;
     private final PaginatePackagesUseCase paginatePackagesUseCase;
 
@@ -37,6 +41,14 @@ public class PackagesController {
     
     @GetMapping
     public Pagination<Package> paginate(@Valid PaginatePackagesParams params){
+
+        final var context = SecurityContextHolder.getContext();
+        System.out.println(
+            Optional.ofNullable(context.getAuthentication())
+                .map(Authentication::getName)
+                .orElse("not authenticated")
+        );
+
         return this.paginatePackagesUseCase.paginate(params);
     }
 

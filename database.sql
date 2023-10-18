@@ -11,7 +11,7 @@ CREATE TABLE packages (
     postal_code VARCHAR(256) NOT NULL,
     email VARCHAR(1024) NOT NULL,
     status package_status NOT NULL,
-    delivery_person_id CHAR(36) ,
+    delivery_person_id CHAR(36),
     tracking_code CHAR(32) NOT NULL
 );
 

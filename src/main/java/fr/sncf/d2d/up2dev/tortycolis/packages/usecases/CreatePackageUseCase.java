@@ -50,7 +50,7 @@ public class CreatePackageUseCase {
         
         final var random = SecureRandom.getInstanceStrong();
         final var bytes = new byte[TRACKING_CODE_SIZE];
-        random.nextBytes(bytes); // [10, 20, -50, -120, -10, 0, 120...]
+        random.nextBytes(bytes);
 
         var output = "";
         for (var i = 0; i < TRACKING_CODE_SIZE; i++){
