@@ -1,5 +1,8 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages.usecases.params;
 
+import java.util.Optional;
+import java.util.UUID;
+
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
@@ -11,6 +14,12 @@ public class PaginatePackagesParams {
     @Min(1)
     @Max(100)
     private long itemsPerPage;
+
+    private UUID deliveryPersonId;
+
+    public Optional<UUID> getDeliveryPersonId(){
+        return Optional.ofNullable(this.deliveryPersonId);
+    }
 
     public long getPage() {
         return this.page;
@@ -26,5 +35,9 @@ public class PaginatePackagesParams {
 
     public void setItemsPerPage(long itemsPerPage){
         this.itemsPerPage = itemsPerPage;
+    }
+
+    public void setDeliveryPersonId(UUID deliveryPersonId){
+        this.deliveryPersonId = deliveryPersonId;
     }
 }

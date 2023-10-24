@@ -14,12 +14,3 @@ CREATE TABLE packages (
     delivery_person_id CHAR(36),
     tracking_code CHAR(32) NOT NULL
 );
-
-CREATE TYPE user_role AS ENUM ('delivery-person', 'admin');
-
-CREATE TABLE users (
-    id CHAR(36) PRIMARY KEY,
-    role user_role NOT NULL,
-    email VARCHAR(1024) NOT NULL,
-    password VARCHAR(1024) NOT NULL
-);

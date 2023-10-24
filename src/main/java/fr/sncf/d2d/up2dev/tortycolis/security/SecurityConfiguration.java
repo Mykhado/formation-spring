@@ -3,7 +3,9 @@ package fr.sncf.d2d.up2dev.tortycolis.security;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,6 +16,7 @@ import fr.sncf.d2d.up2dev.tortycolis.users.persistence.UsersRepository;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class SecurityConfiguration {
     
     private final UsersRepository usersRepository;
@@ -27,7 +30,10 @@ public class SecurityConfiguration {
         http
             .httpBasic(Customizer.withDefaults())
             .userDetailsService(this.usersRepository)
-            .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers(HttpMethod.GET, "/packages").hasAnyRole("ADMINISTRATOR", "DELIVERY_PERSON")
+                .anyRequest().denyAll()
+            );
 
         return http.build();
     }

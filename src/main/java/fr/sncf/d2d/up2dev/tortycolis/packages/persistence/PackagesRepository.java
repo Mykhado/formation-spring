@@ -1,6 +1,7 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages.persistence;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -22,15 +23,24 @@ public class PackagesRepository {
     }
 
     public Pagination<Package> paginate(PaginatePackagesParams params){
-        final var selectQuery = "SELECT * FROM packages ORDER BY id ASC OFFSET :offset LIMIT :limit";
-        final var countQuery = "SELECT COUNT(id) FROM packages";
 
-        final var total = this.jdbcTemplate.queryForObject(countQuery, Collections.emptyMap(), Long.class);
+        final var where = params.getDeliveryPersonId().map(id -> "WHERE delivery_person_id = :deliveryPersonId").orElse("");
 
-        final var selectParameters = Map.of(
-            "offset", params.getPage() * params.getItemsPerPage(),
-            "limit", params.getItemsPerPage()
-        );
+        final var selectQuery = "SELECT * FROM packages " + where + " ORDER BY id ASC OFFSET :offset LIMIT :limit";
+        final var countQuery = "SELECT COUNT(id) FROM packages " + where;
+
+        final var selectParameters = new HashMap<String, Object>();
+
+        selectParameters.put("offset", params.getPage() * params.getItemsPerPage());
+        selectParameters.put("limit", params.getItemsPerPage());
+
+        final var countParameters = new HashMap<String, Object>();
+
+        params.getDeliveryPersonId()
+            .ifPresent(deliveryPersonId -> {
+                selectParameters.put("deliveryPersonId", deliveryPersonId.toString());
+                countParameters.put("deliveryPersonId", deliveryPersonId.toString());
+            });
 
         final var packages = this.jdbcTemplate.queryForStream(
             selectQuery, 
@@ -49,6 +59,9 @@ public class PackagesRepository {
                 .trackingCode(resultSet.getString("tracking_code"))
                 .build()
         ).toList();
+
+
+        final var total = this.jdbcTemplate.queryForObject(countQuery, countParameters, Long.class);
 
         return new Pagination<>(packages, total);
     }

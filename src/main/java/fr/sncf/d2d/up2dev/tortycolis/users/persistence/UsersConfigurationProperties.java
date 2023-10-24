@@ -16,11 +16,10 @@ import fr.sncf.d2d.up2dev.tortycolis.users.models.User;
 @ConfigurationProperties(prefix = "tortycolis")
 public class UsersConfigurationProperties {
     
-    private List<User> users;
+    private final List<User> users;
 
     @Autowired
     public UsersConfigurationProperties(List<User> users) {
-        System.out.println(users);
         this.users = users;
     }
 

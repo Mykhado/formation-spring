@@ -9,6 +9,10 @@ tortycolis:
           email: jean-laurent@sncf.fr
           password: $2y$10$1o81cb8wMl38U/oDbjAV.OqNgY0oEwCH6fSaJUaEY5yd0H4R2cy4q
           role: DELIVERY_PERSON
+        - id: f075d358-726f-11ee-a04f-00155dcb0f37
+          email: safae-lachgar@sncf.fr
+          password: $2y$10$1o81cb8wMl38U/oDbjAV.OqNgY0oEwCH6fSaJUaEY5yd0H4R2cy4q
+          role: DELIVERY_PERSON
 spring:
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQLDialect

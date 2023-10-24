@@ -7,6 +7,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -40,15 +42,8 @@ public class PackagesController {
     }
     
     @GetMapping
+    @PostAuthorize("@packagesGuard.canRead(returnObject.items, principal)")
     public Pagination<Package> paginate(@Valid PaginatePackagesParams params){
-
-        final var context = SecurityContextHolder.getContext();
-        System.out.println(
-            Optional.ofNullable(context.getAuthentication())
-                .map(Authentication::getName)
-                .orElse("not authenticated")
-        );
-
         return this.paginatePackagesUseCase.paginate(params);
     }
 
