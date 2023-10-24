@@ -3,7 +3,6 @@ package fr.sncf.d2d.up2dev.tortycolis.packages.guards;
 import java.util.List;
 import java.util.Set;
 
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import fr.sncf.d2d.up2dev.tortycolis.packages.models.Package;

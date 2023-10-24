@@ -66,6 +66,10 @@ public class Package {
         return this.email;
     }
 
+    public UUID getDeliveryPersonId() {
+        return this.id;
+    }
+
     public PackageStatus getStatus(){
         return this.status;
     }
