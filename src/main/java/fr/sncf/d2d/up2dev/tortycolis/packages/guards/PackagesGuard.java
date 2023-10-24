@@ -22,9 +22,8 @@ public class PackagesGuard {
             if (roles.contains(Role.ADMINISTRATOR))
                 return true;
             
-            if (roles.contains(Role.DELIVERY_PERSON)){
+            if (roles.contains(Role.DELIVERY_PERSON))
                 return packages.stream().allMatch(p -> p.getDeliveryPersonId().equals(userDetails.getDomainUser().getId()));
-            }
         }
 
         return false;
