@@ -16,7 +16,7 @@ public class PackagesGuard {
         
         if (principal instanceof ApplicationUserDetails userDetails){
 
-            final Set<Role> roles = Role.fromAuthorities(userDetails.getAuthorities());
+            final var roles = Role.fromAuthorities(userDetails.getAuthorities());
 
             if (roles.contains(Role.ADMINISTRATOR))
                 return true;

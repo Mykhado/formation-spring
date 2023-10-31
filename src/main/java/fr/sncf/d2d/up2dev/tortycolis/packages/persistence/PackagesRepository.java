@@ -1,6 +1,5 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages.persistence;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
