@@ -17,11 +17,11 @@ import fr.sncf.d2d.up2dev.tortycolis.users.models.Role;
 @Component
 public class PackagesGuard {
     
-    public boolean canRead(List<Package> packages, Object principal, String trackingCode){
+    public boolean canRead(List<Package> packages, Object principal, Optional<String> trackingCode){
 
-        if (Objects.nonNull(trackingCode))
+        if (trackingCode.isPresent())
             return packages.stream()
-                .allMatch(p -> MessageDigest.isEqual(p.getTrackingCode().getBytes(), trackingCode.getBytes()));
+                .allMatch(p -> MessageDigest.isEqual(p.getTrackingCode().getBytes(), trackingCode.get().getBytes()));
         
         if (principal instanceof ApplicationUserDetails userDetails){
 

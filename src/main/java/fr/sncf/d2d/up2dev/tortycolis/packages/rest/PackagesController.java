@@ -1,18 +1,7 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages.rest;
 
-import java.security.NoSuchAlgorithmException;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +16,6 @@ import fr.sncf.d2d.up2dev.tortycolis.packages.usecases.CreatePackageUseCase;
 import fr.sncf.d2d.up2dev.tortycolis.packages.usecases.PaginatePackagesUseCase;
 import fr.sncf.d2d.up2dev.tortycolis.packages.usecases.params.CreatePackageParams;
 import fr.sncf.d2d.up2dev.tortycolis.packages.usecases.params.PaginatePackagesParams;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 
 @RestController
@@ -46,7 +34,7 @@ public class PackagesController {
     }
     
     @GetMapping
-    @PostAuthorize("@packagesGuard.canRead(returnObject.items, principal)")
+    @PostAuthorize("@packagesGuard.canRead(returnObject.items, principal, #params.trackingCode)")
     public Pagination<Package> paginate(@Valid PaginatePackagesParams params){
         return this.paginatePackagesUseCase.paginate(params);
     }

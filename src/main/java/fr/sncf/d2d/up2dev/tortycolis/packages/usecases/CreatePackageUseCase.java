@@ -14,7 +14,7 @@ import fr.sncf.d2d.up2dev.tortycolis.packages.usecases.params.CreatePackageParam
 @Service
 public class CreatePackageUseCase {
 
-    private static final int TRACKING_CODE_SIZE = 16;
+    private static final int TRACKING_CODE_SIZE = 32;
 
     private static final char[] ALPHABET = new char[] {
             'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',

@@ -43,6 +43,10 @@ public class PaginatePackagesParams {
         this.itemsPerPage = itemsPerPage;
     }
 
+    public void setTrackingCode(String trackingCode){
+        this.trackingCode = trackingCode;
+    }
+
     public void setDeliveryPersonId(UUID deliveryPersonId){
         this.deliveryPersonId = deliveryPersonId;
     }
