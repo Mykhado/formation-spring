@@ -18,6 +18,7 @@ public class UsersConfigurationProperties {
     
     private final List<User> users;
 
+    /** Le autowired est ici nécessaire pour indiquer à Spring que le constructeur est à utiliser pour l'injection via @ConfigurationProperties */
     @Autowired
     public UsersConfigurationProperties(List<User> users) {
         this.users = users;

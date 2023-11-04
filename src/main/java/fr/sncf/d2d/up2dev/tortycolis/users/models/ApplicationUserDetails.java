@@ -6,6 +6,9 @@ import java.util.Collections;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/**
+ * Une implémentation de {@link UserDetails} prévue pour encapsuler un objet {@link User} applicatif. 
+ */
 public class ApplicationUserDetails implements UserDetails {
 
     private final User user;

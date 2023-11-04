@@ -17,8 +17,14 @@ public class PaginatePackagesParams {
 
     private UUID deliveryPersonId;
 
+    private String trackingCode;
+
     public Optional<UUID> getDeliveryPersonId(){
         return Optional.ofNullable(this.deliveryPersonId);
+    }
+
+    public Optional<String> getTrackingCode(){
+        return Optional.ofNullable(this.trackingCode);
     }
 
     public long getPage() {

@@ -1,5 +1,7 @@
 package fr.sncf.d2d.up2dev.tortycolis.packages.usecases.params;
 
+import java.util.UUID;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -22,6 +24,8 @@ public class CreatePackageParams {
     private String country;
 
     private String details;
+
+    private UUID deliveryPersonId;
 
     @NotBlank
     private String phoneNumber;
@@ -92,5 +96,13 @@ public class CreatePackageParams {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public UUID getDeliveryPersonId(){
+        return this.deliveryPersonId;
+    }
+
+    public void setDeliveryPersonId(UUID deliveryPersonId){
+        this.deliveryPersonId = deliveryPersonId;
     }
 }

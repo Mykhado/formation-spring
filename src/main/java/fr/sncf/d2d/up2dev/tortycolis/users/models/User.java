@@ -2,6 +2,9 @@ package fr.sncf.d2d.up2dev.tortycolis.users.models;
 
 import java.util.UUID;
 
+/**
+ * Un utilisateur de l'application (livreur ou administrateur).
+ */
 public class User {
 
     private final UUID id;
@@ -33,7 +36,5 @@ public class User {
 
     public Role getRole() {
         return this.role;
-    }    
-
-    
+    }
 }

@@ -2,6 +2,9 @@ package fr.sncf.d2d.up2dev.tortycolis.packages.models;
 
 import java.util.UUID;
 
+/**
+ * Représent un colis (objet métier).
+ */
 public class Package {
 
     private UUID id;
@@ -25,6 +28,8 @@ public class Package {
     private final String email;
 
     private final String trackingCode;
+
+    private final UUID deliveryPersonId;
 
     public UUID getId() {
         return this.id;
@@ -66,10 +71,6 @@ public class Package {
         return this.email;
     }
 
-    public UUID getDeliveryPersonId() {
-        return this.id;
-    }
-
     public PackageStatus getStatus(){
         return this.status;
     }
@@ -78,8 +79,12 @@ public class Package {
         return this.trackingCode;
     }
 
+    public UUID getDeliveryPersonId(){
+        return this.deliveryPersonId;
+    }
+
     private Package(UUID id, String number, String street, String postalCode, String city, String country, String details,
-            String phoneNumber, PackageStatus status, String email, String trackingCode) {
+            String phoneNumber, PackageStatus status, String email, String trackingCode, UUID deliveryPersonId) {
         this.id = id;
         this.number = number;
         this.street = street;
@@ -91,6 +96,7 @@ public class Package {
         this.email = email;
         this.status = status;
         this.trackingCode = trackingCode;
+        this.deliveryPersonId = deliveryPersonId;
     }
 
     public static PackageBuilder builder(){
@@ -120,6 +126,8 @@ public class Package {
         private PackageStatus status;
 
         private String trackingCode;
+
+        private UUID deliveryPersonId;
 
         public PackageBuilder id(UUID id){
             this.id = id;
@@ -176,6 +184,11 @@ public class Package {
             return this;
         }
 
+        public PackageBuilder deliveryPersonId(UUID deliveryPersonId){
+            this.deliveryPersonId = deliveryPersonId;
+            return this;
+        }
+
         public Package build(){
             return new Package(
                 this.id,
@@ -188,7 +201,8 @@ public class Package {
                 this.phoneNumber,
                 this.status,
                 this.email,
-                this.trackingCode
+                this.trackingCode,
+                this.deliveryPersonId
             );
         }
     }
